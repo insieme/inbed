@@ -1,0 +1,91 @@
+
+body {
+    background-color: #222222;
+    color: white;
+    font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+}
+
+textarea {
+    width: 98%;
+    box-sizing: border-box;
+    padding: 5px;
+    margin: 5px;
+    color: white;
+    background-color: black;
+    border: 1px solid grey;
+    border-radius: 3px;
+    font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+    font-size: 10pt;
+}
+
+div {
+    padding: 5px;
+    margin: 5px;
+    background-color: black;
+    border: 1px solid grey;
+    border-radius: 3px;
+    font-size: 10pt;
+}
+
+a {
+    color: #AAF;
+}
+
+#path {
+    color: lightblue;
+}
+
+#filename {
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-decoration-color: #488;
+}
+
+#insid {
+    color: #FFFFAA;
+}
+
+#error {
+    color: #FF3333;
+    font-weight: bolder;
+}
+
+#warning {
+    color: #FFCC33;
+    font-weight: bolder;
+}
+
+#loc {
+    color: #BBF;
+}
+
+#namespace {
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-decoration-color: #BBB;
+}
+
+hr.file {
+    padding: 2pt;
+    border: none;
+    border-top: medium double #CCC;
+    color: #CCC;
+}
+
+#output {
+    margin-left: 12pt;
+    white-space: pre-wrap;
+    display: block;
+}
+
+#input {
+    margin-left: 12pt;
+}
+
+#navi {
+    position: fixed;
+    z-index: 100;
+    left: 2px;
+    top: 20pt;
+    font-size: 8pt;
+}
