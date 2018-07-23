@@ -3,7 +3,9 @@ var g_wid = 0;
 var g_eid = 0;
 var g_navi = "";
 
-function copy_title(that) {
+function copy_title(that, event) {
+    event.stopPropagation();
+    // copy title string to clipboard
     var inp = document.createElement('input');
     document.body.appendChild(inp);
     inp.value = that.title;
@@ -90,8 +92,8 @@ function demangle(val) {
     val = val.replace(escape("_negation_"), "!");
 
     // improve lambdas and source locations
-    val = '<span title="' + orig + '" onclick="copy_title(this)" id="insid">' + escape_html(val) + '</span>';
-    locreplacement = '<span id="loc">@</span><span title="$1$2" onclick="copy_title(this)" id="filename">$2</span>:<span id="loc">$3:$4</span>';
+    val = '<span title="' + orig + '" onclick="copy_title(this, event)" id="insid">' + escape_html(val) + '</span>';
+    locreplacement = '<span id="loc">@</span><span title="$1$2" onclick="copy_title(this, event);" id="filename">$2</span>:<span id="loc">$3:$4</span>';
     lambdareplacement = '<strong>&lambda;</strong>' + locreplacement;
     val = val.replace(/lambda@(\/.*?\/)(\w+\.\w+)_(\d+)_(\d+)/g, lambdareplacement);
     val = val.replace(/\(lambda at (\/.*?\/)(\w+\.\w+):(\d+):(\d+)\)/g, lambdareplacement);
@@ -106,7 +108,7 @@ function format_path(val) {
     idx = Math.max(idx, val.lastIndexOf("/allscale_runtime/"));
     idx = Math.max(idx, val.lastIndexOf("/hpx/"));
     if (idx != -1) val = val.substring(idx);
-    return '<span title="' + orig + '" onclick="copy_title(this)" id="path">' + escape_html(val) + '</span>';
+    return '<span title="' + orig + '" onclick="copy_title(this, event)" id="path">' + escape_html(val) + '</span>';
 }
 
 function process_word(val) {
@@ -147,7 +149,7 @@ function process_namespaces(val) {
     ]);
     var reg = new RegExp(Array.from(ns_map.keys()).join("|"), "g");
     val = val.replace(reg, function (match, offset, string) {
-        return '<span title="' + match + '" id="namespace">' + ns_map.get(match) + '</span>';
+        return '<span title="' + match + '" onclick="copy_title(this, event)" id="namespace">' + ns_map.get(match) + '</span>';
     });
     return val;
 }
